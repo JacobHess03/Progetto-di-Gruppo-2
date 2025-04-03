@@ -1,12 +1,13 @@
 class Ristorante():
     # Attributi di classe
     menu = []  # Lista che rappresenta il menu del ristorante
-    aperto = False  # Stato di apertura del ristorante (True = aperto, False = chiuso)
+    aperto = False
 
     def __init__(self, nome, cucina):
         # Inizializza un'istanza della classe Ristorante con nome e tipo di cucina
         self.nome = nome
         self.cucina = cucina
+       
 
     def descrivi_ristorante(self):
         # Stampa una descrizione del ristorante, inclusi il nome, il tipo di cucina e il menu
@@ -14,24 +15,24 @@ class Ristorante():
         print(f"LA SUA CUCINA È DI TIPO {self.cucina}")
         print(f"IL MENU DA NOI SERVITO È QUESTO: {self.menu}")
 
-    @staticmethod
-    def stato_apertura():
+    
+    def stato_apertura(self):
         # Stampa lo stato di apertura del ristorante (aperto o chiuso)
-        print("Stato del ristorante:", "Aperto" if Ristorante.aperto else "Chiuso")
+        print("Stato del ristorante:", "Aperto" if self.aperto else "Chiuso")
 
     def apertura(self, risposta):
         # Modifica lo stato di apertura del ristorante in base alla risposta dell'utente
         if risposta.upper() == "SI":
-            Ristorante.aperto = True
+            self.aperto = True
             print("RISTORANTE APERTO")
         else:
-            Ristorante.aperto = False
+            self.aperto = False
             print("RISTORANTE CHIUSO")
 
     def mostra_menu(self):
         # Stampa il menu aggiornato del ristorante
         print("\nMenu aggiornato:")
-        for voce in Ristorante.menu:
+        for voce in self.menu:
             print(f'{voce["piatto"]}: {voce["prezzo"]}€')
         print("-" * 20)
 
@@ -39,14 +40,14 @@ class Ristorante():
         # Rimuove un piatto dal menu in base al nome
         for elemento in Ristorante.menu:
             if elemento["piatto"] == nome_piatto:
-                Ristorante.menu.remove(elemento)
+                self.menu.remove(elemento)
                 print(f'"{nome_piatto}" rimosso dal menu.')
                 return
         print(f'"{nome_piatto}" non trovato nel menu.')
 
     def aggiungi_piatto(self, nome_piatto, prezzo_piatto):
         # Aggiunge un piatto al menu
-        Ristorante.menu.append({"piatto": nome_piatto, "prezzo": prezzo_piatto})
+        self.menu.append({"piatto": nome_piatto, "prezzo": prezzo_piatto})
         print(f'"{nome_piatto}" aggiunto al menu con prezzo {prezzo_piatto}€.')
 
 # Funzioni esterne per interagire con la classe Ristorante
