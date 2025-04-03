@@ -38,7 +38,7 @@ class Ristorante():
 
     def rimuovi_piatto(self, nome_piatto):
         # Rimuove un piatto dal menu in base al nome
-        for elemento in Ristorante.menu:
+        for elemento in self.menu:
             if elemento["piatto"] == nome_piatto:
                 self.menu.remove(elemento)
                 print(f'"{nome_piatto}" rimosso dal menu.')
